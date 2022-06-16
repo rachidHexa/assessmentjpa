@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
 import javax.persistence.*;
 
@@ -16,13 +15,15 @@ import javax.persistence.*;
 @Entity
 public class App {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long app_id;
 
     private String app_name;
 
     @ManyToOne
-    @JoinColumn(name="mobile_id", nullable=false)
+    @JoinColumn(name = "mobile_id")
     private Mobile mobile;
+
+
 }

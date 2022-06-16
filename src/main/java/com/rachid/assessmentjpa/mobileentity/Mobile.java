@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -15,18 +16,20 @@ import java.util.Set;
 @Entity
 public class Mobile {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long mobile_id;
 
-    private String Mobile_company;
+    private String mobile_company;
 
-    private String Mobile_Name;
+    private String mobile_Name;
 
-    @OneToMany(mappedBy="mobile")
-    private Set<App> apps;
+    @OneToMany( mappedBy = "mobile")
+    private Set<App> apps ;
 
     public void addApp(App app){
         apps.add(app);
     }
+
+
 }
